@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CasinoX - Premium Online Gaming Experience with live jackpots, VIP club, promotions, and secure play." />
+  <title>CasinoX - Premium Online Gaming</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Teko:wght@700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      background-attachment: fixed;
+      background-size: cover;
+      color: #f5f5f5;
+    }
+
+    .font-brand {
+      font-family: 'Teko', sans-serif;
+    }
+
+    .jackpot-amount {
+      font-size: 2.5rem;
+      color: #FFD700;
+      font-weight: bold;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body class="text-white">
+  <!-- Header -->
+  <header class="text-center py-8 border-b border-gray-700 bg-black bg-opacity-70">
+    <h1 class="font-brand text-6xl text-yellow-400 tracking-widest">CasinoX</h1>
+    <p class="text-gray-300 text-lg">Premium Online Gaming Experience</p>
+    <nav class="mt-6">
+      <ul class="flex flex-wrap justify-center gap-4 text-lg font-medium">
+        <li><a href="#home" class="hover:text-yellow-400 transition">Home</a></li>
+        <li><a href="#about" class="hover:text-yellow-400 transition">About Us</a></li>
+        <li><a href="#promotions" class="hover:text-yellow-400 transition">Promotions</a></li>
+        <li><a href="#vip" class="hover:text-yellow-400 transition">VIP Club</a></li>
+        <li><a href="#faq" class="hover:text-yellow-400 transition">FAQ</a></li>
+        <li><a href="#responsible" class="hover:text-yellow-400 transition">Responsible Gaming</a></li>
+        <li><a href="#contact" class="hover:text-yellow-400 transition">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Jackpot Banner -->
+  <section class="bg-gradient-to-r from-yellow-600 to-yellow-400 py-6 text-center">
+    <p class="text-black text-xl font-semibold">Current Live Jackpot:</p>
+    <p id="jackpot" class="jackpot-amount text-black">$1,000,000</p>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-16 px-6 text-center bg-black bg-opacity-70">
+    <h2 class="section-title text-yellow-400 mb-4">About CasinoX</h2>
+    <p class="max-w-3xl mx-auto text-gray-300 text-lg">
+      CasinoX offers an unmatched online gaming experience designed for thrill seekers and strategic players. Our platform combines cutting-edge technology, fair play, and luxury rewards to give you the ultimate casino experience from the comfort of your home.
+    </p>
+  </section>
+
+  <!-- Promotions Section -->
+  <section id="promotions" class="py-16 px-6 bg-gray-800 bg-opacity-90">
+    <h2 class="section-title text-yellow-400 text-center mb-10">Current Promotions</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div class="bg-gray-900 p-6 rounded-xl shadow-lg hover:scale-105 transition-transform">
+        <h3 class="text-2xl font-bold mb-2 text-yellow-300">🎁 Welcome Bonus</h3>
+        <p>Receive a 200% bonus on your first deposit up to $500 + 50 free spins.</p>
+      </div>
+      <div class="bg-gray-900 p-6 rounded-xl shadow-lg hover:scale-105 transition-transform">
+        <h3 class="text-2xl font-bold mb-2 text-yellow-300">🎉 Weekend Double XP</h3>
+        <p>Earn double experience points on all games every weekend!</p>
+      </div>
+      <div class="bg-gray-900 p-6 rounded-xl shadow-lg hover:scale-105 transition-transform">
+        <h3 class="text-2xl font-bold mb-2 text-yellow-300">💰 High Roller Bonus</h3>
+        <p>Deposit $1000+ and unlock 20% cashback with VIP status perks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIP Club Section -->
+  <section id="vip" class="py-16 px-6 text-center bg-black bg-opacity-80">
+    <h2 class="section-title text-yellow-400 mb-6">CasinoX VIP Club</h2>
+    <p class="max-w-3xl mx-auto text-gray-300 text-lg mb-6">
+      Step into the world of elite rewards. Join our VIP Club to enjoy personalized services, private tournaments, luxury gifts, and expedited withdrawals.
+    </p>
+    <button class="bg-yellow-400 text-black font-semibold py-3 px-10 rounded-full shadow-lg hover:bg-yellow-300 transition">Join Now</button>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-16 px-6 bg-gray-800 bg-opacity-95">
+    <h2 class="section-title text-yellow-400 text-center mb-10">Frequently Asked Questions</h2>
+    <div class="max-w-3xl mx-auto space-y-6 text-left">
+      <div>
+        <h3 class="text-xl font-semibold text-yellow-300">Is CasinoX safe and legal?</h3>
+        <p class="text-gray-300">Absolutely. We are licensed and regulated under international gaming authorities with advanced encryption to secure your data.</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold text-yellow-300">What payment methods do you accept?</h3>
+        <p class="text-gray-300">We accept credit/debit cards, e-wallets (PayPal, Skrill), and bank transfers. Withdrawals are processed within 24 hours.</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold text-yellow-300">Can I play from my phone?</h3>
+        <p class="text-gray-300">Yes! CasinoX is fully responsive and optimized for all devices including smartphones and tablets.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Responsible Gaming Section -->
+  <section id="responsible" class="py-16 px-6 text-center bg-black bg-opacity-80">
+    <h2 class="section-title text-yellow-400 mb-6">Responsible Gaming</h2>
+    <p class="max-w-3xl mx-auto text-gray-300 text-lg">
+      CasinoX promotes responsible gaming practices. Set personal limits, take breaks, and reach out for support when needed. We prioritize your well-being while you enjoy the game.
+    </p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 px-6 bg-gray-800 text-center">
+    <h2 class="section-title text-yellow-400 mb-6">Contact Us</h2>
+    <p class="text-gray-300 mb-6">Reach out to our support team for any inquiries or assistance.</p>
+    <form class="max-w-xl mx-auto grid gap-4 text-left">
+      <input type="text" name="name" placeholder="Your Name" class="bg-gray-900 text-white p-3 rounded-md" required />
+      <input type="email" name="email" placeholder="Your Email" class="bg-gray-900 text-white p-3 rounded-md" required />
+      <textarea rows="4" name="message" placeholder="Message" class="bg-gray-900 text-white p-3 rounded-md" required></textarea>
+      <button type="submit" class="bg-yellow-400 text-black py-3 px-6 rounded-lg hover:bg-yellow-300 font-semibold">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-6 text-center bg-black bg-opacity-80 border-t border-gray-700">
+    <p class="text-gray-500">&copy; 2025 CasinoX. All rights reserved.</p>
+    <div class="flex justify-center mt-3 space-x-6">
+      <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-yellow-400"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-yellow-400"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-yellow-400"><i class="fab fa-instagram"></i></a>
+    </div>
+  </footer>
+
+  <!-- Jackpot JavaScript -->
+  <script>
+    let jackpot = 1000000;
+    setInterval(() => {
+      const increase = Math.floor(Math.random() * 15 + 5);
+      jackpot += increase;
+      document.getElementById("jackpot").innerText = "$" + jackpot.toLocaleString();
+    }, 1000);
+  </script>
+</body>
+
+</html>
