@@ -1,166 +1,390 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CasinoX - Premium Online Gaming Experience with live jackpots, VIP club, promotions, and secure play." />
-  <title>CasinoX - Premium Online Gaming</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CasinoX - Premium Online Gaming</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter & Teko -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Teko:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- TailwindCSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles to integrate the color scheme and fonts */
+        body {
+            background-color: #121212; /* Deep Black */
+            background-image: url('https://www.transparenttextures.com/patterns/dark-denim-3.png');
+            color: #F5F5F5; /* Soft White */
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Define custom color classes for easier use */
+        .bg-primary { background-color: #C62828; } /* Royal Red */
+        .bg-secondary { background-color: #FFD700; } /* Rich Gold */
+        .bg-background { background-color: #121212; } /* Deep Black */
+        .text-accent { color: #F5F5F5; } /* Soft White */
+        .text-secondary { color: #FFD700; } /* Rich Gold */
+        .border-secondary { border-color: #FFD700; }
+        .hover-bg-primary:hover { background-color: #a52121; }
+        .hover-bg-secondary:hover { background-color: #d4b500; }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Teko:wght@700&display=swap" rel="stylesheet" />
+        /* Custom font for the brand */
+        .font-brand {
+            font-family: 'Teko', sans-serif;
+        }
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        /* Hide sections by default */
+        .page-section {
+            display: none;
+        }
 
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
-      background-attachment: fixed;
-      background-size: cover;
-      color: #f5f5f5;
-    }
+        /* Animation for page transitions */
+        .fade-in {
+            animation: fadeInAnimation 0.5s ease-in-out forwards;
+        }
 
-    .font-brand {
-      font-family: 'Teko', sans-serif;
-    }
+        @keyframes fadeInAnimation {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Styling for the loader */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #FFD700;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 1rem auto;
+        }
 
-    .jackpot-amount {
-      font-size: 2.5rem;
-      color: #FFD700;
-      font-weight: bold;
-    }
-
-    .section-title {
-      font-size: 2.25rem;
-      font-weight: 700;
-    }
-  </style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
+<body class="bg-background text-accent">
 
-<body class="text-white">
-  <!-- Header -->
-  <header class="text-center py-8 border-b border-gray-700 bg-black bg-opacity-70">
-    <h1 class="font-brand text-6xl text-yellow-400 tracking-widest">CasinoX</h1>
-    <p class="text-gray-300 text-lg">Premium Online Gaming Experience</p>
-    <nav class="mt-6">
-      <ul class="flex flex-wrap justify-center gap-4 text-lg font-medium">
-        <li><a href="#home" class="hover:text-yellow-400 transition">Home</a></li>
-        <li><a href="#about" class="hover:text-yellow-400 transition">About Us</a></li>
-        <li><a href="#promotions" class="hover:text-yellow-400 transition">Promotions</a></li>
-        <li><a href="#vip" class="hover:text-yellow-400 transition">VIP Club</a></li>
-        <li><a href="#faq" class="hover:text-yellow-400 transition">FAQ</a></li>
-        <li><a href="#responsible" class="hover:text-yellow-400 transition">Responsible Gaming</a></li>
-        <li><a href="#contact" class="hover:text-yellow-400 transition">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <div class="container mx-auto px-4">
 
-  <!-- Jackpot Banner -->
-  <section class="bg-gradient-to-r from-yellow-600 to-yellow-400 py-6 text-center">
-    <p class="text-black text-xl font-semibold">Current Live Jackpot:</p>
-    <p id="jackpot" class="jackpot-amount text-black">$1,000,000</p>
-  </section>
+        <!-- Header Section -->
+        <header class="text-center py-6 md:py-8 border-b border-gray-800">
+            <h1 class="font-brand text-6xl md:text-7xl text-secondary tracking-wider">CasinoX</h1>
+            <p class="text-gray-400 mt-1 text-sm md:text-base">A sleek and immersive online casino platform</p>
+            
+            <!-- Navigation -->
+            <nav class="mt-6">
+                <ul class="flex flex-wrap justify-center items-center space-x-4 md:space-x-8 text-lg">
+                    <li><a href="#" class="nav-link" onclick="showPage('home')">Home</a></li>
+                    <li><a href="#" class="nav-link" onclick="showPage('games')">Games</a></li>
+                    <li><a href="#" class="nav-link" onclick="showPage('how-to-play')">How to Play</a></li>
+                    <li><a href="#" class="nav-link" onclick="showPage('dream-a-game')">Dream a Game</a></li>
+                    <li><a href="#" class="nav-link" onclick="showPage('feedback')">Feedback</a></li>
+                    <li><a href="#" class="nav-link bg-primary px-4 py-2 rounded-md text-white hover-bg-primary transition-colors" onclick="showPage('login')">Login</a></li>
+                </ul>
+            </nav>
+        </header>
 
-  <!-- About Section -->
-  <section id="about" class="py-16 px-6 text-center bg-black bg-opacity-70">
-    <h2 class="section-title text-yellow-400 mb-4">About CasinoX</h2>
-    <p class="max-w-3xl mx-auto text-gray-300 text-lg">
-      CasinoX offers an unmatched online gaming experience designed for thrill seekers and strategic players. Our platform combines cutting-edge technology, fair play, and luxury rewards to give you the ultimate casino experience from the comfort of your home.
-    </p>
-  </section>
+        <main id="main-content">
 
-  <!-- Promotions Section -->
-  <section id="promotions" class="py-16 px-6 bg-gray-800 bg-opacity-90">
-    <h2 class="section-title text-yellow-400 text-center mb-10">Current Promotions</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      <div class="bg-gray-900 p-6 rounded-xl shadow-lg hover:scale-105 transition-transform">
-        <h3 class="text-2xl font-bold mb-2 text-yellow-300">🎁 Welcome Bonus</h3>
-        <p>Receive a 200% bonus on your first deposit up to $500 + 50 free spins.</p>
-      </div>
-      <div class="bg-gray-900 p-6 rounded-xl shadow-lg hover:scale-105 transition-transform">
-        <h3 class="text-2xl font-bold mb-2 text-yellow-300">🎉 Weekend Double XP</h3>
-        <p>Earn double experience points on all games every weekend!</p>
-      </div>
-      <div class="bg-gray-900 p-6 rounded-xl shadow-lg hover:scale-105 transition-transform">
-        <h3 class="text-2xl font-bold mb-2 text-yellow-300">💰 High Roller Bonus</h3>
-        <p>Deposit $1000+ and unlock 20% cashback with VIP status perks.</p>
-      </div>
+            <!-- Home Page Section -->
+            <section id="home" class="page-section text-center py-16 md:py-24">
+                <h2 class="text-4xl md:text-5xl font-bold">Welcome to the Ultimate Gaming Experience</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto mt-4">Discover a world of excitement with our premium selection of casino games. Fair play, big wins, and endless entertainment await.</p>
+                <div class="mt-8 space-x-4">
+                    <button onclick="showPage('games')" class="bg-primary text-white font-bold py-3 px-8 rounded-lg shadow-lg hover-bg-primary transform hover:scale-105 transition-all">Explore Games</button>
+                    <button onclick="showPage('how-to-play')" class="bg-secondary text-black font-bold py-3 px-8 rounded-lg shadow-lg hover-bg-secondary transform hover:scale-105 transition-all">Learn the Rules</button>
+                </div>
+            </section>
+
+            <!-- Games Page Section -->
+            <section id="games" class="page-section py-16">
+                <h2 class="text-4xl font-bold text-center mb-12">Our Games</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Game Card: Blackjack -->
+                    <div class="bg-gray-900 rounded-lg overflow-hidden border-2 border-transparent hover:border-secondary transition-all group">
+                        <img src="https://placehold.co/400x300/000000/FFD700?text=Blackjack" alt="Blackjack Game" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Blackjack</h3>
+                            <p class="text-gray-400">Get as close to 21 as you can without going over. Beat the dealer and win big!</p>
+                        </div>
+                    </div>
+                    <!-- Game Card: Roulette -->
+                    <div class="bg-gray-900 rounded-lg overflow-hidden border-2 border-transparent hover:border-secondary transition-all group">
+                        <img src="https://placehold.co/400x300/C62828/FFFFFF?text=Roulette" alt="Roulette Game" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Roulette</h3>
+                            <p class="text-gray-400">Place your bets on your lucky numbers and watch the wheel spin for a chance to win.</p>
+                        </div>
+                    </div>
+                    <!-- Game Card: Slots -->
+                    <div class="bg-gray-900 rounded-lg overflow-hidden border-2 border-transparent hover:border-secondary transition-all group">
+                        <img src="https://placehold.co/400x300/000000/FFD700?text=Slots" alt="Slots Game" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Slots</h3>
+                            <p class="text-gray-400">Spin the reels on our exciting themed slot machines for massive jackpots.</p>
+                        </div>
+                    </div>
+                    <!-- Game Card: Poker -->
+                    <div class="bg-gray-900 rounded-lg overflow-hidden border-2 border-transparent hover:border-secondary transition-all group">
+                        <img src="https://placehold.co/400x300/C62828/FFFFFF?text=Poker" alt="Poker Game" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Poker</h3>
+                            <p class="text-gray-400">Test your skills and bluff your way to victory in our Texas Hold'em poker rooms.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How to Play Page Section -->
+            <section id="how-to-play" class="page-section py-16">
+                <h2 class="text-4xl font-bold text-center mb-12">How to Play</h2>
+                <div class="space-y-8 max-w-4xl mx-auto">
+                    <!-- Game Rules: Blackjack -->
+                    <div class="bg-gray-900 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-secondary mb-2">Blackjack Rules</h3>
+                        <p class="text-gray-400">The goal is to have a hand value closer to 21 than the dealer's without exceeding 21. Aces can be 1 or 11. You can 'Hit' to take another card or 'Stand' to keep your current hand.</p>
+                        <button onclick="getSimplifiedRules('Blackjack', 'blackjack-simple-rules')" class="mt-4 bg-secondary text-black font-bold py-2 px-4 rounded-lg shadow-md hover-bg-secondary transform hover:scale-105 transition-all">✨ Explain Like I'm 5</button>
+                        <div id="blackjack-simple-rules" class="mt-4 text-gray-300 bg-gray-800 p-4 rounded-md hidden"></div>
+                    </div>
+                    <!-- Game Rules: Roulette -->
+                    <div class="bg-gray-900 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-secondary mb-2">Roulette Rules</h3>
+                        <p class="text-gray-400">Bet on a single number, a range of numbers, the colors red or black, or whether the number is odd or even. The ball is spun on the wheel, and if it lands on your bet, you win.</p>
+                        <button onclick="getSimplifiedRules('Roulette', 'roulette-simple-rules')" class="mt-4 bg-secondary text-black font-bold py-2 px-4 rounded-lg shadow-md hover-bg-secondary transform hover:scale-105 transition-all">✨ Explain Like I'm 5</button>
+                        <div id="roulette-simple-rules" class="mt-4 text-gray-300 bg-gray-800 p-4 rounded-md hidden"></div>
+                    </div>
+                    <!-- Game Rules: Slots -->
+                    <div class="bg-gray-900 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-secondary mb-2">Slots Rules</h3>
+                        <p class="text-gray-400">Place your bet, spin the reels, and match symbols along the paylines to win. Look out for special symbols like Wilds and Scatters for bonus rounds and free spins.</p>
+                        <button onclick="getSimplifiedRules('Slots', 'slots-simple-rules')" class="mt-4 bg-secondary text-black font-bold py-2 px-4 rounded-lg shadow-md hover-bg-secondary transform hover:scale-105 transition-all">✨ Explain Like I'm 5</button>
+                        <div id="slots-simple-rules" class="mt-4 text-gray-300 bg-gray-800 p-4 rounded-md hidden"></div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Dream a Game Page Section -->
+            <section id="dream-a-game" class="page-section py-16">
+                 <h2 class="text-4xl font-bold text-center mb-12">Dream a New Game</h2>
+                <div class="max-w-xl mx-auto">
+                    <div class="bg-gray-900 p-8 rounded-lg shadow-lg space-y-6">
+                        <div>
+                            <label for="game-theme" class="block text-sm font-medium text-gray-300 mb-1">Enter a Theme (e.g., "haunted pirates", "cyberpunk city")</label>
+                            <input type="text" id="game-theme" class="w-full bg-gray-800 border border-gray-700 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-secondary">
+                        </div>
+                        <div class="text-center">
+                            <button onclick="generateGameIdea()" class="bg-primary text-white font-bold py-3 px-8 rounded-lg shadow-lg hover-bg-primary transform hover:scale-105 transition-all">✨ Generate Game Idea</button>
+                        </div>
+                        <div id="game-idea-result" class="mt-6 text-gray-300 bg-gray-800 p-4 rounded-md hidden"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Feedback Page Section -->
+            <section id="feedback" class="page-section py-16">
+                 <h2 class="text-4xl font-bold text-center mb-12">Send Us Your Feedback</h2>
+                <div class="max-w-xl mx-auto">
+                    <form id="feedback-form" class="bg-gray-900 p-8 rounded-lg shadow-lg space-y-6">
+                        <div>
+                            <label for="feedback-name" class="block text-sm font-medium text-gray-300 mb-1">Name</label>
+                            <input type="text" id="feedback-name" class="w-full bg-gray-800 border border-gray-700 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-secondary">
+                        </div>
+                        <div>
+                            <label for="feedback-email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                            <input type="email" id="feedback-email" class="w-full bg-gray-800 border border-gray-700 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-secondary">
+                        </div>
+                        <div>
+                            <label for="feedback-message" class="block text-sm font-medium text-gray-300 mb-1">Message</label>
+                            <textarea id="feedback-message" rows="4" class="w-full bg-gray-800 border border-gray-700 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
+                        </div>
+                        <div class="text-center space-y-4">
+                            <button type="button" onclick="analyzeFeedback()" class="bg-secondary text-black font-bold py-3 px-8 rounded-lg shadow-lg hover-bg-secondary transform hover:scale-105 transition-all">✨ Analyze My Feedback</button>
+                            <button type="submit" class="bg-primary text-white font-bold py-3 px-8 rounded-lg shadow-lg hover-bg-primary transform hover:scale-105 transition-all">Submit Feedback</button>
+                        </div>
+                        <div id="feedback-analysis" class="mt-4 text-gray-300 bg-gray-800 p-4 rounded-md hidden"></div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Login Page Section -->
+            <section id="login" class="page-section py-16">
+                <h2 class="text-4xl font-bold text-center mb-12">Player Login</h2>
+                <div class="max-w-md mx-auto">
+                    <form class="bg-gray-900 p-8 rounded-lg shadow-lg space-y-6">
+                        <div>
+                            <label for="login-email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                            <input type="email" id="login-email" class="w-full bg-gray-800 border border-gray-700 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-secondary">
+                        </div>
+                        <div>
+                            <label for="login-password" class="block text-sm font-medium text-gray-300 mb-1">Password</label>
+                            <input type="password" id="login-password" class="w-full bg-gray-800 border border-gray-700 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-secondary">
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <input id="remember-me" type="checkbox" class="h-4 w-4 bg-gray-700 border-gray-600 text-primary focus:ring-primary rounded">
+                                <label for="remember-me" class="ml-2 block text-sm text-gray-300">Remember me</label>
+                            </div>
+                            <a href="#" class="text-sm text-secondary hover:underline">Forgot password?</a>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="w-full bg-primary text-white font-bold py-3 px-8 rounded-lg shadow-lg hover-bg-primary transform hover:scale-105 transition-all">Sign In</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="text-center py-6 border-t border-gray-800 mt-16">
+            <p class="text-gray-500">&copy; 2024 CasinoX. All rights reserved. Please play responsibly.</p>
+        </footer>
+
     </div>
-  </section>
 
-  <!-- VIP Club Section -->
-  <section id="vip" class="py-16 px-6 text-center bg-black bg-opacity-80">
-    <h2 class="section-title text-yellow-400 mb-6">CasinoX VIP Club</h2>
-    <p class="max-w-3xl mx-auto text-gray-300 text-lg mb-6">
-      Step into the world of elite rewards. Join our VIP Club to enjoy personalized services, private tournaments, luxury gifts, and expedited withdrawals.
-    </p>
-    <button class="bg-yellow-400 text-black font-semibold py-3 px-10 rounded-full shadow-lg hover:bg-yellow-300 transition">Join Now</button>
-  </section>
+    <script>
+        // --- Page Navigation Logic ---
+        const pageSections = document.querySelectorAll('.page-section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        function showPage(pageId) {
+            pageSections.forEach(section => {
+                section.style.display = 'none';
+                section.classList.remove('fade-in');
+            });
 
-  <!-- FAQ Section -->
-  <section id="faq" class="py-16 px-6 bg-gray-800 bg-opacity-95">
-    <h2 class="section-title text-yellow-400 text-center mb-10">Frequently Asked Questions</h2>
-    <div class="max-w-3xl mx-auto space-y-6 text-left">
-      <div>
-        <h3 class="text-xl font-semibold text-yellow-300">Is CasinoX safe and legal?</h3>
-        <p class="text-gray-300">Absolutely. We are licensed and regulated under international gaming authorities with advanced encryption to secure your data.</p>
-      </div>
-      <div>
-        <h3 class="text-xl font-semibold text-yellow-300">What payment methods do you accept?</h3>
-        <p class="text-gray-300">We accept credit/debit cards, e-wallets (PayPal, Skrill), and bank transfers. Withdrawals are processed within 24 hours.</p>
-      </div>
-      <div>
-        <h3 class="text-xl font-semibold text-yellow-300">Can I play from my phone?</h3>
-        <p class="text-gray-300">Yes! CasinoX is fully responsive and optimized for all devices including smartphones and tablets.</p>
-      </div>
-    </div>
-  </section>
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.style.display = 'block';
+                setTimeout(() => {
+                    targetPage.classList.add('fade-in');
+                }, 10);
+            }
 
-  <!-- Responsible Gaming Section -->
-  <section id="responsible" class="py-16 px-6 text-center bg-black bg-opacity-80">
-    <h2 class="section-title text-yellow-400 mb-6">Responsible Gaming</h2>
-    <p class="max-w-3xl mx-auto text-gray-300 text-lg">
-      CasinoX promotes responsible gaming practices. Set personal limits, take breaks, and reach out for support when needed. We prioritize your well-being while you enjoy the game.
-    </p>
-  </section>
+            navLinks.forEach(link => {
+                link.classList.remove('text-secondary', 'font-bold');
+                const linkPageId = link.getAttribute('onclick').match(/'(.*?)'/)[1];
+                if (linkPageId === pageId) {
+                    link.classList.add('text-secondary', 'font-bold');
+                }
+            });
+        }
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-16 px-6 bg-gray-800 text-center">
-    <h2 class="section-title text-yellow-400 mb-6">Contact Us</h2>
-    <p class="text-gray-300 mb-6">Reach out to our support team for any inquiries or assistance.</p>
-    <form class="max-w-xl mx-auto grid gap-4 text-left">
-      <input type="text" name="name" placeholder="Your Name" class="bg-gray-900 text-white p-3 rounded-md" required />
-      <input type="email" name="email" placeholder="Your Email" class="bg-gray-900 text-white p-3 rounded-md" required />
-      <textarea rows="4" name="message" placeholder="Message" class="bg-gray-900 text-white p-3 rounded-md" required></textarea>
-      <button type="submit" class="bg-yellow-400 text-black py-3 px-6 rounded-lg hover:bg-yellow-300 font-semibold">Send Message</button>
-    </form>
-  </section>
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('home');
+        });
+        
+        // --- Gemini API Integration ---
+        const apiKey = ""; // Leave empty, will be handled by the environment
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
-  <!-- Footer -->
-  <footer class="py-6 text-center bg-black bg-opacity-80 border-t border-gray-700">
-    <p class="text-gray-500">&copy; 2025 CasinoX. All rights reserved.</p>
-    <div class="flex justify-center mt-3 space-x-6">
-      <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-yellow-400"><i class="fab fa-facebook-f"></i></a>
-      <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-yellow-400"><i class="fab fa-twitter"></i></a>
-      <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-yellow-400"><i class="fab fa-instagram"></i></a>
-    </div>
-  </footer>
+        async function callGeminiAPI(prompt) {
+            const payload = {
+                contents: [{
+                    role: "user",
+                    parts: [{ text: prompt }]
+                }]
+            };
 
-  <!-- Jackpot JavaScript -->
-  <script>
-    let jackpot = 1000000;
-    setInterval(() => {
-      const increase = Math.floor(Math.random() * 15 + 5);
-      jackpot += increase;
-      document.getElementById("jackpot").innerText = "$" + jackpot.toLocaleString();
-    }, 1000);
-  </script>
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                if (result.candidates && result.candidates.length > 0 && result.candidates[0].content.parts.length > 0) {
+                    return result.candidates[0].content.parts[0].text;
+                } else {
+                    return "Sorry, I couldn't generate a response. Please try again.";
+                }
+            } catch (error) {
+                console.error("Gemini API call failed:", error);
+                return "An error occurred while contacting the AI. Please check the console for details.";
+            }
+        }
+        
+        // --- Feature 1: Simplified Rules ---
+        async function getSimplifiedRules(gameName, elementId) {
+            const resultDiv = document.getElementById(elementId);
+            resultDiv.innerHTML = '<div class="loader"></div>';
+            resultDiv.classList.remove('hidden');
+            
+            const prompt = `Explain the rules of the casino game "${gameName}" to me as if I am a 5-year-old. Keep it very simple and short.`;
+            const simplifiedRules = await callGeminiAPI(prompt);
+            
+            resultDiv.innerHTML = simplifiedRules.replace(/\n/g, '<br>');
+        }
+        
+        // --- Feature 2: Game Idea Generator ---
+        async function generateGameIdea() {
+            const themeInput = document.getElementById('game-theme');
+            const resultDiv = document.getElementById('game-idea-result');
+            const theme = themeInput.value.trim();
+
+            if (!theme) {
+                resultDiv.innerText = "Please enter a theme first.";
+                resultDiv.classList.remove('hidden');
+                return;
+            }
+            
+            resultDiv.innerHTML = '<div class="loader"></div>';
+            resultDiv.classList.remove('hidden');
+
+            const prompt = `Generate a creative casino game concept based on the theme: "${theme}". Provide a game name, a short, exciting description, and a unique bonus feature. Format it like this: **Game Name:** [Name]\n**Description:** [Description]\n**Bonus Feature:** [Feature]`;
+            const gameIdea = await callGeminiAPI(prompt);
+            
+            resultDiv.innerHTML = gameIdea.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong class="text-secondary">$1</strong>');
+        }
+        
+        // --- Feature 3: Feedback Analysis ---
+        async function analyzeFeedback() {
+            const messageInput = document.getElementById('feedback-message');
+            const resultDiv = document.getElementById('feedback-analysis');
+            const message = messageInput.value.trim();
+
+            if (!message) {
+                resultDiv.innerText = "Please write a message before analyzing.";
+                resultDiv.classList.remove('hidden');
+                return;
+            }
+            
+            resultDiv.innerHTML = '<div class="loader"></div>';
+            resultDiv.classList.remove('hidden');
+            
+            const prompt = `Analyze the sentiment of the following user feedback and provide a short, friendly, encouraging response directly to the user. Feedback: "${message}"`;
+            const analysis = await callGeminiAPI(prompt);
+            
+            resultDiv.innerHTML = analysis;
+        }
+
+        // Prevent form submission for feedback form to handle with JS
+        document.getElementById('feedback-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would normally handle the actual form submission (e.g., send to a server)
+            alert('Thank you for your feedback!');
+        });
+
+    </script>
 </body>
-
 </html>
